@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Gracey 💜</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #d8b4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #content {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .line {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            margin: 20px 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+            text-shadow: 0 0 8px rgba(255,255,255,0.8);
+        }
+
+        #imageContainer {
+            margin-top: 30px;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+        }
+
+        #imageContainer img {
+            width: 400px;
+            max-width: 90%;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: slowZoom 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        #finalMessage {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-top: 25px;
+            opacity: 0;
+            text-shadow: 0 0 10px rgba(255,255,255,0.9);
+            transition: opacity 2s ease-in;
+        }
+
+        /* Falling Petals */
+        .petal {
+            position: absolute;
+            top: -10px;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 182, 193, 0.8);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        audio {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div id="content">
+
+    <div id="line1" class="line">
+        I know that this is the consequence of what I did and now I'm getting the own taste of what I did.
+    </div>
+
+    <div id="line2" class="line">
+        I will show it through my actions not just words.
+    </div>
+
+    <div id="line3" class="line">
+        I'm waiting and I will wait for you Gracey.
+    </div>
+
+    <div id="line4" class="line">
+        I will hold this doll close to me and will never lose it again.
+    </div>
+
+    <div id="imageContainer">
+        <img src="teddy.jpg" alt="Teddy Bear">
+    </div>
+
+    <div id="finalMessage">
+        I’m still here.
+    </div>
+
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="naetru-aval-irundhal.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+window.onload = function() {
+
+    const music = document.getElementById("bgMusic");
+
+    // Start music after first click (browser restriction)
+    document.body.addEventListener("click", function startMusic() {
+        music.play();
+        document.body.removeEventListener("click", startMusic);
+    });
+
+    setTimeout(() => {
+        document.getElementById("line1").style.opacity = 1;
+    }, 1000);
+
+    setTimeout(() => {
+        document.getElementById("line2").style.opacity = 1;
+    }, 5000);
+
+    setTimeout(() => {
+        document.getElementById("line3").style.opacity = 1;
+    }, 9000);
+
+    setTimeout(() => {
+        document.getElementById("line4").style.opacity = 1;
+    }, 13000);
+
+    setTimeout(() => {
+        document.getElementById("imageContainer").style.opacity = 1;
+    }, 17000);
+
+    setTimeout(() => {
+        document.getElementById("finalMessage").style.opacity = 1;
+    }, 21000);
+
+};
+
+// Generate falling petals
+setInterval(() => {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, 10000);
+
+}, 400);
+
+</script>
+
+</body>
+</html>
